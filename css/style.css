@@ -102,3 +102,90 @@ h1 {
     flex-direction: column;
     gap: 10px;
 }
+
+#filter {
+    margin-left: 100px;
+    padding: 20px 0px;
+}
+
+#filter label {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#filter_select {
+    background-color: #901C1C;
+    color: white;
+    padding: 20px;
+    width: 170px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    border-color: transparent;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px 100px;
+    gap: 7%;
+}
+
+.media_card {
+    display: flex;
+    flex-direction: column;
+    max-width: 28%;
+    width: 350px;
+    margin-bottom: 20px;
+    color: #901C1C;
+}
+
+.media_card_preview {
+    object-fit: cover;
+    aspect-ratio: 7/6;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card_info div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.heart {
+    width: 21px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.photograph-footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #DB8876;
+    width: 380px;
+    padding: 15px;
+    border-radius: 5px 5px 0px 0px;
+    position: fixed;
+    bottom: 0;
+    right: 36px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.photograph-footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.photograph-footer img {
+    width: 18px;
+}

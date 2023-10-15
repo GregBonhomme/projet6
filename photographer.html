@@ -18,12 +18,14 @@
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </section>
     <section id="filter">
-      <span>Trier par</span>
-      <select name="filters" id="filter_select"></select>
-    </section>
-    <section id="gallery">
-    </section>
-    <section id="photograph-footer">
+      <label>Trier par</label>
+      <select name="filters" id="filter_select">
+        <option value="popularity">Popularité</option>
+        <option value disabled>—————————————</option>
+        <option value="date">Date</option>
+        <option value disabled>—————————————</option>
+        <option value="title">Titre</option>
+      </select>
     </section>
   </main>
   <div id="contact_modal">
@@ -48,7 +50,7 @@
 <script type="module" src="scripts/models/images.js"></script>
 <script type="module" src="scripts/models/videos.js"></script>
 <script type="module" src="scripts/factories/mediaFactory.js"></script>
-<script src="scripts/templates/media.js"></script>
+<script type="module" src="scripts/templates/media.js"></script>
 
 <script src="scripts/utils/contactForm.js"></script>
 

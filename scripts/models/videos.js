@@ -33,11 +33,15 @@ export class Video {
         return this._date;
     }
 
+    set date(value) {
+        this._date = value;
+    }
+
     get price() {
         return this._price;
     }
 
     get image() {
-        return "assets/images/videoThumbnails/" + this._title + ".jpeg"
+        return "assets/images/videoThumbnails/" + this._video.slice(0, -4) + ".jpg"
     }
 }

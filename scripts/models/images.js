@@ -1,7 +1,4 @@
-import { checkPhotographer } from "../pages/photographer.js";
-
-const photographerName = await (checkPhotographer()).name;
-console.log(photographerName);
+import { photographer } from "../pages/photographer.js";
 
 export class Images {
 
@@ -30,19 +27,28 @@ export class Images {
     }
 
     get image() {
-        return "assets/photographers/Sample Photos/" + photographerName + "/" + (this._image);
+        return "assets/photographers/Sample Photos/" + photographer.name + "/" + (this._image);
     }
 
     get likes() {
         return this._likes;
     }
 
+    set likes(value) {
+        return this._likes = value;
+    }
+
     get date() {
         return this._date;
+    }
+
+    set date(value) {
+        this._date = value;
     }
 
     get price() {
         return this._price;
     }
+
 }
 // 

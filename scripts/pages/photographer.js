@@ -1,6 +1,7 @@
-import { MediaFactory } from '../factories/mediaFactory.js';/*
-import { galleryTemplate } from '../templates/media.js';*/
+import { MediaFactory } from '../factories/mediaFactory.js';
+import { galleryTemplate, footerTemplate } from '../templates/media.js';
 
+//on vérifie si les informations sont dans le local storage
 let photographersData = window.localStorage.getItem('photographersData');
 if (photographersData === null) {
     const info = await fetch("data/photographers.json");
@@ -10,63 +11,49 @@ if (photographersData === null) {
 } else {
     photographersData = JSON.parse(photographersData);
 }
+//on récupère l'id du photographe de cette page
+let params = new URLSearchParams(location.search);
+let pageId = params.get('id');
+//on retrouve toutes les informations de ce photographe
+export let photographer = findPhotographer();
+export let gallery = findGallery();
 
-export function checkPhotographer() {
-    //on récupère l'id du photographe de cette page
-    let params = new URLSearchParams(location.search);
-    let targetId = params.get('id');
-    //on obtient tout les infos de ce photographes dans un objet "result"
+function findPhotographer() {
     let result = {};
     const photographers = photographersData.photographers;
     for (let i = 0; i < photographers.length; i++) {
-        if (photographers[i]["id"] == targetId) {
+        if (photographers[i]["id"] == pageId) {
             Object.assign(result, photographers[i]);
         }
     }
-    console.log(result);
     return result;
 }
 
-function checkGallery() {
-    //on récupère l'id du photographe de cette page
-    let params = new URLSearchParams(location.search);
-    let targetId = params.get('id');
-    //on obtient tout les médias lié a ce photographe
+function findGallery() {
     let temp = [];
     const media = photographersData.media;
     for (let i = 0; i < media.length; i++) {
-        if (media[i]["photographerId"] == targetId) {
+        if (media[i]["photographerId"] == pageId) {
             temp.push(media[i]);
         }
     }
     let gallery = []
     temp.forEach((media) => gallery.push(new MediaFactory(media)));
-    console.log(gallery);
     return gallery;
 }
 
 function setPageInfo() {
-    const photographer = checkPhotographer();
-    const gallery = checkGallery();
     const header = document.querySelector(".photograph-header");
-    const filter = document.getElementById("filter_select");
-
-    const footer = document.getElementById("photograph-footer");
-
     const headerInfo = document.createElement("div");
     headerInfo.setAttribute("class", "header_info");
-
     const h2 = document.createElement('h2');
     h2.innerText = photographer.name;
-
     const location = document.createElement('span');
     location.setAttribute("class", "location");
     location.innerText = photographer.city + ", " + photographer.country;
-
     const tagLine = document.createElement("span");
     tagLine.setAttribute("class", "tagline");
     tagLine.innerText = photographer.tagline;
-
     const img = document.createElement('img');
     img.setAttribute("class", "portrait");
     img.setAttribute("src", "assets/photographers/" + photographer.portrait)
@@ -76,9 +63,45 @@ function setPageInfo() {
     headerInfo.appendChild(h2);
     headerInfo.appendChild(location);
     headerInfo.appendChild(tagLine);
-    //filter.appendChild(setFilters(photographer.id));
     main.appendChild(galleryTemplate(gallery));
-    //footer.appendChild(totalLikes(photographer.id));
+    main.appendChild(footerTemplate(photographer));
 }
+
+function applyFilter(value, tab) {
+    switch (value) {
+        case 'popularity':
+            tab.sort((a, b) => a.likes - b.likes);
+            break;
+        case 'date':
+            tab.sort((a, b) => a.date.localeCompare(b.date))
+            break
+        case 'title':
+            tab.sort((a, b) => {
+                let titleA = a.title.toUpperCase();
+                let titleB = b.title.toUpperCase();
+                if (titleA < titleB) {
+                    return -1;
+                }
+                if (titleA > titleB) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+            break;
+    }
+    return tab;
+}
+
+//permettre de rafraichir la gallerie d'image en fonction du filtre sélectioné
+let filter = document.getElementById("filter_select");
+filter.addEventListener("change", () => {
+    document.getElementById("gallery").remove();
+    applyFilter(filter.value, gallery);
+    main.appendChild(galleryTemplate(gallery))
+})
+
+console.log(gallery);
+console.log(gallery.sort((a, b) => a.likes - b.likes));
 
 setPageInfo();
