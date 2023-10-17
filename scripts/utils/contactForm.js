@@ -1,3 +1,4 @@
+//ouverture et fermeture de la modale
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "block";
@@ -8,6 +9,8 @@ function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
+
+//validation du formulaire
 function getInfo() {
     const firstname = document.getElementById("firstname_input").value;
     const lastname = document.getElementById("lastname_input").value;

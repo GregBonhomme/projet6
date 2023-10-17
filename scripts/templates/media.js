@@ -2,6 +2,7 @@ import { openLightbox, currentSlide } from "./lightbox.js";
 
 let totalLikes = 0;
 
+//composition de la gallerie dans son ensemble
 export function galleryTemplate(data) {
     const gallery = document.createElement("section");
     gallery.setAttribute("id", "gallery");
@@ -16,6 +17,7 @@ export function galleryTemplate(data) {
     return gallery;
 }
 
+//composition de chaque carte de la gallerie
 function galleryCardTemplate(data) {
     const card = document.createElement("div");
     card.setAttribute("class", "media_card");
@@ -54,6 +56,7 @@ function galleryCardTemplate(data) {
     return card;
 }
 
+//composition du footer avec le total de likes et le tarif du photographe
 export function footerTemplate(photographer) {
     const footer = document.createElement("section");
     footer.setAttribute("class", "photograph-footer");
@@ -74,16 +77,11 @@ export function footerTemplate(photographer) {
     return footer;
 }
 
+//ajout de like individuel et global
 function addLike() {
     let count = parseInt(this.previousSibling.innerText);
     this.previousSibling.innerText = count + 1;
     let totalCount = parseInt(document.getElementById("totalLikes").innerText);
     document.getElementById("totalLikes").innerText = totalCount + 1;
 
-}
-
-
-function getIndex() {
-    let index = this.getAttribute("index");
-    return index;
 }
