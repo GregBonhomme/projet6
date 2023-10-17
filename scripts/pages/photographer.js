@@ -1,5 +1,6 @@
 import { MediaFactory } from '../factories/mediaFactory.js';
 import { galleryTemplate, footerTemplate } from '../templates/media.js';
+import { lightboxTemplate } from '../templates/lightbox.js';
 
 //on vérifie si les informations sont dans le local storage
 let photographersData = window.localStorage.getItem('photographersData');
@@ -19,14 +20,14 @@ export let photographer = findPhotographer();
 export let gallery = findGallery();
 
 function findPhotographer() {
-    let result = {};
+    let photographer = {};
     const photographers = photographersData.photographers;
     for (let i = 0; i < photographers.length; i++) {
         if (photographers[i]["id"] == pageId) {
-            Object.assign(result, photographers[i]);
+            Object.assign(photographer, photographers[i]);
         }
     }
-    return result;
+    return photographer;
 }
 
 function findGallery() {
@@ -42,7 +43,11 @@ function findGallery() {
     return gallery;
 }
 
+/* Affichage de la page */
+
 function setPageInfo() {
+    const modal_title = document.querySelector(".modal h2");
+    modal_title.innerText = modal_title.innerText + " " + photographer.name;
     const header = document.querySelector(".photograph-header");
     const headerInfo = document.createElement("div");
     headerInfo.setAttribute("class", "header_info");
@@ -65,7 +70,10 @@ function setPageInfo() {
     headerInfo.appendChild(tagLine);
     main.appendChild(galleryTemplate(gallery));
     main.appendChild(footerTemplate(photographer));
+    main.appendChild(lightboxTemplate(gallery))
 }
+
+/* Fonction de filtres */
 
 function applyFilter(value, tab) {
     switch (value) {
@@ -100,8 +108,5 @@ filter.addEventListener("change", () => {
     applyFilter(filter.value, gallery);
     main.appendChild(galleryTemplate(gallery))
 })
-
-console.log(gallery);
-console.log(gallery.sort((a, b) => a.likes - b.likes));
 
 setPageInfo();

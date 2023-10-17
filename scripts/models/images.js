@@ -10,6 +10,7 @@ export class Images {
         this._likes = data.likes;
         this._date = data.date;
         this._price = data.price;
+        this._type = "image";
     }
 
 
@@ -42,12 +43,12 @@ export class Images {
         return this._date;
     }
 
-    set date(value) {
-        this._date = value;
-    }
-
     get price() {
         return this._price;
+    }
+
+    get type() {
+        return this._type;
     }
 
 }

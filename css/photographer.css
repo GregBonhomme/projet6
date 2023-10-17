@@ -1,11 +1,201 @@
-#contact_modal {
-    display: none;
+/* MAIN */
+
+main {
+    margin: 0px 100px;
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 300px;
-    margin: 0 100px;
+    gap: 15%;
+    background-color: #FAFAFA;
+}
+
+.photograph-header h2 {
+    font-size: 64px;
+    color: #D3573C;
+    margin: 0px;
+}
+
+.photograph-header .location {
+    font-size: 24px;
+    color: #901C1C;
+}
+
+.header_info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#filter {
+    padding: 20px 0px;
+}
+
+#filter label {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#filter_select {
+    background-color: #901C1C;
+    color: white;
+    padding: 20px;
+    width: 170px;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    border-color: transparent;
+}
+
+/* GALLERY */
+
+#gallery {
+    display: flex;
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 7%;
+    margin-bottom: 100px;
+}
+
+.media_card {
+    display: flex;
+    flex-direction: column;
+    max-width: 29%;
+    flex: 28% 1 0;
+    margin-bottom: 20px;
+    color: #901C1C;
+}
+
+.media_card_preview {
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 7/6;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.card_info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card_info div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.heart {
+    width: 21px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.photograph-footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #DB8876;
+    width: 380px;
+    padding: 15px;
+    border-radius: 5px 5px 0px 0px;
+    position: fixed;
+    bottom: 0;
+    right: 36px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.photograph-footer div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.photograph-footer img {
+    width: 18px;
+}
+
+/* LIGHTBOX */
+
+#lightbox {
+    display: none;
+    background-color: rgb(255, 255, 255, 0.8);
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#lightbox_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 3% auto;
+    width: 80%;
+    background-color: white;
+    padding: 20px;
+}
+
+.slide img,
+.slide video {
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 3/2;
+    max-height: 750px;
+}
+
+.slide h4 {
+    margin: 0;
+    padding-top: 10px;
+    font-size: 24px;
+    color: #901C1C;
+}
+
+.lightbox_leftArrow {
+    position: relative;
+    left: 5px;
+    margin-right: 20px;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+}
+
+.lightbox_rightArrow {
+    position: relative;
+    right: 5px;
+    margin-left: 20px;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+}
+
+.lightbox_closeBtn {
+    width: 28px;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* CONTACT MODAL */
+
+#contact_modal {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
 }
 
 .contact_button {
@@ -31,11 +221,14 @@
     justify-content: space-between;
     padding: 35px;
     margin: auto;
+    max-width: 700px;
 }
 
 .modal header {
     justify-content: space-between;
     width: 100%;
+    margin-top: 10px;
+    margin-bottom: 40px;
 }
 
 .modal header img {
@@ -45,7 +238,7 @@
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
 }
 
 form {
@@ -73,4 +266,9 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+    font-size: 20px;
+}
+
+#msg_input {
+    height: 170px;
 }

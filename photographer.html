@@ -36,8 +36,20 @@
       </header>
       <form>
         <div>
-          <label>Prénom</label>
-          <input />
+          <label for="firstname">Prénom</label>
+          <input type="text" name="firstname" id="firstname_input">
+        </div>
+        <div>
+          <label for="lastname">Nom</label>
+          <input type="text" name="lastname" id="lastname_input">
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email_input">
+        </div>
+        <div>
+          <label for="msg">Votre message</label>
+          <input type="text" name="msg" id="msg_input">
         </div>
         <button class="contact_button">Envoyer</button>
       </form>
@@ -51,7 +63,6 @@
 <script type="module" src="scripts/models/videos.js"></script>
 <script type="module" src="scripts/factories/mediaFactory.js"></script>
 <script type="module" src="scripts/templates/media.js"></script>
-
 <script src="scripts/utils/contactForm.js"></script>
 
 </html>

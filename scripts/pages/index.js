@@ -24,4 +24,3 @@ async function init() {
 }
 
 init();
-console.log(photographers);

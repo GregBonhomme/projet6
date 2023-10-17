@@ -1,3 +1,5 @@
+import { photographer } from "../pages/photographer.js";
+
 export class Video {
     constructor(data) {
         this._id = data.id;
@@ -7,6 +9,7 @@ export class Video {
         this._likes = data.likes;
         this._date = data.date;
         this._price = data.price;
+        this._type = "video";
     }
 
     get id() {
@@ -22,7 +25,7 @@ export class Video {
     }
 
     get video() {
-        return this._video;
+        return "assets/photographers/Sample Photos/" + photographer.name + "/" + this._video;
     }
 
     get likes() {
@@ -33,15 +36,15 @@ export class Video {
         return this._date;
     }
 
-    set date(value) {
-        this._date = value;
-    }
-
     get price() {
         return this._price;
     }
 
     get image() {
         return "assets/images/videoThumbnails/" + this._video.slice(0, -4) + ".jpg"
+    }
+
+    get type() {
+        return this._type;
     }
 }
