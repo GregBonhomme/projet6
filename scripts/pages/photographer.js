@@ -47,7 +47,8 @@ function findGallery() {
 
 function setPageInfo() {
     const modal_title = document.querySelector(".modal h2");
-    modal_title.innerText = modal_title.innerText + " " + photographer.name;
+    modal_title.innerHt
+    modal_title.innerText = modal_title.innerText + "\n " + photographer.name;
     const header = document.querySelector(".photograph-header");
     const headerInfo = document.createElement("div");
     headerInfo.setAttribute("class", "header_info");
@@ -61,7 +62,8 @@ function setPageInfo() {
     tagLine.innerText = photographer.tagline;
     const img = document.createElement('img');
     img.setAttribute("class", "portrait");
-    img.setAttribute("src", "assets/photographers/" + photographer.portrait)
+    img.setAttribute("src", "assets/photographers/" + photographer.portrait);
+    img.setAttribute("alt", photographer.name);
 
     header.prepend(headerInfo);
     header.appendChild(img);
@@ -78,7 +80,7 @@ function setPageInfo() {
 function applyFilter(value, tab) {
     switch (value) {
         case 'popularity':
-            tab.sort((a, b) => a.likes - b.likes);
+            tab.sort((a, b) => b.likes - a.likes);
             break;
         case 'date':
             tab.sort((a, b) => a.date.localeCompare(b.date))

@@ -11,7 +11,7 @@
 
 <body>
   <header>
-    <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
   </header>
   <main id="main">
     <section class="photograph-header">
@@ -28,7 +28,7 @@
       </select>
     </section>
   </main>
-  <div id="contact_modal">
+  <dialog id="contact_modal" aria-labelledby="header h2">
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
@@ -37,24 +37,24 @@
       <form>
         <div>
           <label for="firstname">Prénom</label>
-          <input type="text" name="firstname" id="firstname_input">
+          <input type="text" name="firstname" id="firstname_input" required>
         </div>
         <div>
           <label for="lastname">Nom</label>
-          <input type="text" name="lastname" id="lastname_input">
+          <input type="text" name="lastname" id="lastname_input" required>
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="email" name="email" id="email_input">
+          <input type="email" name="email" id="email_input" required>
         </div>
         <div>
           <label for="msg">Votre message</label>
-          <input type="text" name="msg" id="msg_input">
+          <input type="text" name="msg" id="msg_input" required>
         </div>
         <button class="contact_button">Envoyer</button>
       </form>
     </div>
-  </div>
+  </dialog>
 </body>
 
 

@@ -3,25 +3,29 @@ let slideIndex = 1;
 
 //mise en place de la lightbox
 export function lightboxTemplate(data) {
-    const lightbox = document.createElement("section");
+    const lightbox = document.createElement("dialog");
     lightbox.setAttribute("id", "lightbox");
+    lightbox.setAttribute("aria-label", "image closeup view")
     const content = document.createElement("div");
     content.setAttribute("id", "lightbox_content")
     const leftArrow = document.createElement("img");
     leftArrow.setAttribute("src", "assets/icons/left-arrow.png");
     leftArrow.setAttribute("class", "lightbox_leftArrow");
+    leftArrow.setAttribute("alt", "Previous image");
     leftArrow.addEventListener("click", () => {
         nextSlide(-1);
     })
     const rightArrow = document.createElement("img");
     rightArrow.setAttribute("src", "assets/icons/right-arrow.png");
     rightArrow.setAttribute("class", "lightbox_rightArrow");
+    rightArrow.setAttribute("alt", "Next image");
     rightArrow.addEventListener("click", () => {
         nextSlide(1);
     })
     const closeBtn = document.createElement("img");
     closeBtn.setAttribute("src", "assets/icons/close.png");
     closeBtn.setAttribute("class", "lightbox_closeBtn");
+    closeBtn.setAttribute("alt", "Close dialog");
     closeBtn.addEventListener("click", () => {
         closeLightbox();
     })
@@ -44,12 +48,14 @@ function lightboxGallery(data, node) {
         if (data[i].type == "image") {
             const media = document.createElement("img");
             media.setAttribute("src", data[i].image);
+            media.setAttribute("alt", data[i].title);
             display.appendChild(media);
         }
         else if (data[i].type == "video") {
             const media = document.createElement("video");
             media.setAttribute("src", data[i].video);
             media.setAttribute("controls", "");
+            media.setAttribute("alt", data[i].title);
             display.appendChild(media);
         }
         const title = document.createElement("h4");
@@ -72,12 +78,14 @@ export function setLightboxInfo(n) {
 }
 
 //ouverture ,fermeture, défilement de la lightbox
+// const dialog = ;
+
 export function openLightbox() {
-    document.getElementById("lightbox").style.display = "block";
+    document.getElementById("lightbox").showModal();
 }
 
 function closeLightbox() {
-    document.getElementById("lightbox").style.display = "none";
+    document.getElementById("lightbox").close();
 }
 
 export function currentSlide(n) {

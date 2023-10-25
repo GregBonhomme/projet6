@@ -25,12 +25,14 @@ function galleryCardTemplate(data) {
         const img = document.createElement("img")
         img.setAttribute("src", data.image);
         img.setAttribute("class", "media_card_preview");
+        img.setAttribute("alt", data.title);
         card.appendChild(img);
     }
     else if (data.type == "video") {
         const img = document.createElement("video")
         img.setAttribute("src", data.video);
         img.setAttribute("class", "media_card_preview");
+        img.setAttribute("alt", data.title);
         card.appendChild(img);
     }
     const info = document.createElement("div");
@@ -44,6 +46,7 @@ function galleryCardTemplate(data) {
     totalLikes = totalLikes + data.likes;
     const heart = document.createElement("img");
     heart.setAttribute("src", "assets/icons/like.png");
+    heart.setAttribute("alt", "Likes");
     heart.setAttribute("class", "heart");
     heart.addEventListener("click", addLike);
 

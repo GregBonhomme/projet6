@@ -12,6 +12,7 @@ function photographerTemplate(data) {
         const img = document.createElement('img');
         img.setAttribute("class", "portrait");
         img.setAttribute("src", "assets/photographers/" + portrait)
+        img.setAttribute("alt", name)
 
         const h2 = document.createElement('h2');
         h2.textContent = name;

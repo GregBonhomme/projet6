@@ -40,10 +40,6 @@ export class Video {
         return this._price;
     }
 
-    get image() {
-        return "assets/images/videoThumbnails/" + this._video.slice(0, -4) + ".jpg"
-    }
-
     get type() {
         return this._type;
     }
