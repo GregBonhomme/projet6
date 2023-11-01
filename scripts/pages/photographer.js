@@ -72,7 +72,7 @@ function setPageInfo() {
     headerInfo.appendChild(tagLine);
     main.appendChild(galleryTemplate(gallery));
     main.appendChild(footerTemplate(photographer));
-    main.appendChild(lightboxTemplate(gallery))
+    main.appendChild(lightboxTemplate(gallery));
 }
 
 /* Fonction de filtres */
@@ -107,8 +107,11 @@ function applyFilter(value, tab) {
 let filter = document.getElementById("filter_select");
 filter.addEventListener("change", () => {
     document.getElementById("gallery").remove();
+    document.getElementById("lightbox").remove();
     applyFilter(filter.value, gallery);
-    main.appendChild(galleryTemplate(gallery))
+    main.appendChild(galleryTemplate(gallery));
+    main.appendChild(lightboxTemplate(gallery));
+    console.log(gallery);
 })
 
 setPageInfo();

@@ -8,9 +8,10 @@ export function galleryTemplate(data) {
     gallery.setAttribute("id", "gallery");
     for (let i = 0; i < data.length; i++) {
         let galleryCard = galleryCardTemplate(data[i]);
+        galleryCard.setAttribute("index", i + 1);
         galleryCard.firstChild.addEventListener("click", () => {
             openLightbox();
-            currentSlide([i + 1]);
+            currentSlide(i + 1);
         })
         gallery.appendChild(galleryCard);
     }
@@ -21,6 +22,7 @@ export function galleryTemplate(data) {
 function galleryCardTemplate(data) {
     const card = document.createElement("div");
     card.setAttribute("class", "media_card");
+    card.setAttribute("tabindex", "3");
     if (data.type == "image") {
         const img = document.createElement("img")
         img.setAttribute("src", data.image);
@@ -38,7 +40,8 @@ function galleryCardTemplate(data) {
     const info = document.createElement("div");
     info.setAttribute("class", "card_info");
     const title = document.createElement("h3");
-    title.setAttribute("class", "media_card_title")
+    title.setAttribute("class", "media_card_title");
+    title.setAttribute("lang", "eng");
     title.innerText = data.title;
     const likes = document.createElement("div");
     const counter = document.createElement("span");
@@ -88,3 +91,14 @@ function addLike() {
     document.getElementById("totalLikes").innerText = totalCount + 1;
 
 }
+
+//ouvrir une slide par sélection au clavier
+
+document.addEventListener("keydown", (e) => {
+    let target = document.querySelector(":focus");
+    if (target.classList.contains("media_card") && e.key === "Enter") {
+        const index = target.getAttribute("index");
+        openLightbox();
+        currentSlide(index);
+    }
+})

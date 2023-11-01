@@ -191,13 +191,15 @@ main {
 
 #contact_modal {
     position: absolute;
-    top: 40px;
+    top: 200px;
     left: 0;
     right: 0;
     border: none;
     border-radius: 5px;
     background-color: #DB8876;
     overflow: hidden;
+    max-height: none;
+    padding: 0;
 }
 
 .contact_button {
@@ -211,6 +213,7 @@ main {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 15px;
 }
 
 .modal {
@@ -223,10 +226,9 @@ main {
 }
 
 .modal header {
-    justify-content: space-between;
     width: 100%;
-    margin-top: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
+    height: auto;
 }
 
 .modal header img {
@@ -240,6 +242,7 @@ main {
     font-size: 64px;
     font-weight: normal;
     text-align: left;
+    margin: 0;
 }
 
 form {

@@ -12,6 +12,7 @@ export function lightboxTemplate(data) {
     leftArrow.setAttribute("src", "assets/icons/left-arrow.png");
     leftArrow.setAttribute("class", "lightbox_leftArrow");
     leftArrow.setAttribute("alt", "Previous image");
+    leftArrow.setAttribute("aria-label", "Next image");
     leftArrow.addEventListener("click", () => {
         nextSlide(-1);
     })
@@ -19,6 +20,7 @@ export function lightboxTemplate(data) {
     rightArrow.setAttribute("src", "assets/icons/right-arrow.png");
     rightArrow.setAttribute("class", "lightbox_rightArrow");
     rightArrow.setAttribute("alt", "Next image");
+    rightArrow.setAttribute("aria-label", "Previous image");
     rightArrow.addEventListener("click", () => {
         nextSlide(1);
     })
@@ -26,6 +28,7 @@ export function lightboxTemplate(data) {
     closeBtn.setAttribute("src", "assets/icons/close.png");
     closeBtn.setAttribute("class", "lightbox_closeBtn");
     closeBtn.setAttribute("alt", "Close dialog");
+    closeBtn.setAttribute("aria-label", "Close dialog");
     closeBtn.addEventListener("click", () => {
         closeLightbox();
     })
@@ -42,27 +45,28 @@ export function lightboxTemplate(data) {
 //mise en place de toute les slides de la lightbox
 function lightboxGallery(data, node) {
     for (let i = 0; i < data.length; i++) {
-        const display = document.createElement("div");
-        display.setAttribute("class", "slide");
-        display.style.display = "none";
+        const slide = document.createElement("div");
+        slide.setAttribute("class", "slide");
+        slide.style.display = "none";
         if (data[i].type == "image") {
             const media = document.createElement("img");
             media.setAttribute("src", data[i].image);
             media.setAttribute("alt", data[i].title);
-            display.appendChild(media);
+            slide.appendChild(media);
         }
         else if (data[i].type == "video") {
             const media = document.createElement("video");
             media.setAttribute("src", data[i].video);
             media.setAttribute("controls", "");
             media.setAttribute("alt", data[i].title);
-            display.appendChild(media);
+            slide.appendChild(media);
         }
         const title = document.createElement("h4");
+        title.setAttribute("lang", "eng");
         title.innerText = data[i].title;
 
-        display.appendChild(title);
-        node.appendChild(display);
+        slide.appendChild(title);
+        node.appendChild(slide);
     }
 }
 
@@ -78,7 +82,6 @@ export function setLightboxInfo(n) {
 }
 
 //ouverture ,fermeture, défilement de la lightbox
-// const dialog = ;
 
 export function openLightbox() {
     document.getElementById("lightbox").showModal();
