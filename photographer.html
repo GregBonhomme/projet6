@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/style.css" rel="stylesheet" type="text/css">
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -11,14 +11,14 @@
 
 <body>
   <header>
-    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" /></a>
+    <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"></a>
   </header>
   <main id="main">
-    <section class="photograph-header">
+    <div class="photograph-header">
       <button class="contact_button" onclick="displayModal()" tabindex="2">Contactez-moi</button>
-    </section>
-    <section id="filter">
-      <label>Trier par</label>
+    </div>
+    <div id="filter">
+      <label for="filter_select">Trier par</label>
       <select name="filters" id="filter_select" tabindex="1">
         <option value="popularity">Popularité</option>
         <option value disabled>—————————————</option>
@@ -26,43 +26,42 @@
         <option value disabled>—————————————</option>
         <option value="title">Titre</option>
       </select>
-    </section>
+    </div>
   </main>
-  <dialog id="contact_modal" aria-labelledby="header h2">
+  <dialog id="contact_modal" aria-labelledby="header_name">
     <div class="modal">
       <header>
-        <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <h2 id="header_name">Contactez-moi</h2>
+        <img src="assets/icons/close.svg" onclick="closeModal()" alt="Croix de fermeture du formulaire de contact">
       </header>
-      <form>
+      <form aria-labelledby="header_name">
         <div>
           <label for="firstname">Prénom</label>
-          <input type="text" name="firstname" id="firstname_input" required>
+          <input type="text" name="firstname" id="firstname" required>
         </div>
         <div>
           <label for="lastname">Nom</label>
-          <input type="text" name="lastname" id="lastname_input" required>
+          <input type="text" name="lastname" id="lastname" required>
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="email" name="email" id="email_input" required>
+          <input type="email" name="email" id="email" required>
         </div>
         <div>
           <label for="msg">Votre message</label>
-          <input type="text" name="msg" id="msg_input" required>
+          <input type="text" name="msg" id="msg" required>
         </div>
         <button class="contact_button">Envoyer</button>
       </form>
     </div>
   </dialog>
+
+  <script type="module" src="scripts/pages/photographer.js"></script>
+  <script type="module" src="scripts/models/images.js"></script>
+  <script type="module" src="scripts/models/videos.js"></script>
+  <script type="module" src="scripts/factories/mediaFactory.js"></script>
+  <script type="module" src="scripts/templates/media.js"></script>
+  <script src="scripts/utils/contactForm.js"></script>
 </body>
-
-
-<script type="module" src="scripts/pages/photographer.js"></script>
-<script type="module" src="scripts/models/images.js"></script>
-<script type="module" src="scripts/models/videos.js"></script>
-<script type="module" src="scripts/factories/mediaFactory.js"></script>
-<script type="module" src="scripts/templates/media.js"></script>
-<script src="scripts/utils/contactForm.js"></script>
 
 </html>

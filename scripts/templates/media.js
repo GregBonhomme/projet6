@@ -71,7 +71,8 @@ export function footerTemplate(photographer) {
     counter.innerText = totalLikes;
     counter.setAttribute("id", "totalLikes")
     const icon = document.createElement("img");
-    icon.setAttribute("src", "assets/icons/black_like.png")
+    icon.setAttribute("src", "assets/icons/black_like.png");
+    icon.setAttribute("alt", "Icone en forme de coeur");
     const price = document.createElement("span");
     price.innerText = photographer.price + "€ / jour";
 

@@ -12,10 +12,10 @@ function closeModal() {
 //validation du formulaire
 function getInfo() {
     const dialog = document.getElementById("contact_modal");
-    const firstname = document.getElementById("firstname_input").value;
-    const lastname = document.getElementById("lastname_input").value;
-    const email = document.getElementById("email_input").value;
-    const msg = document.getElementById("msg_input").value;
+    const firstname = document.getElementById("firstname").value;
+    const lastname = document.getElementById("lastname").value;
+    const email = document.getElementById("email").value;
+    const msg = document.getElementById("msg").value;
 
     console.log("Bonjour je suis " + firstname + " " + lastname + " .");
     console.log("Mon email est le suivant : " + email);
