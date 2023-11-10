@@ -11,23 +11,44 @@ function closeModal() {
 
 //validation du formulaire
 function getInfo() {
+    let input_check = 0;
     const dialog = document.getElementById("contact_modal");
-    const firstname = document.getElementById("firstname").value;
-    const lastname = document.getElementById("lastname").value;
-    const email = document.getElementById("email").value;
-    const msg = document.getElementById("msg").value;
+    const firstname = document.getElementById("firstname");
+    const lastname = document.getElementById("lastname");
+    const email = document.getElementById("email");
+    const msg = document.getElementById("msg");
+    document.getElementById("firstname_error").innerText = "";
+    document.getElementById("lastname_error").innerText = "";
+    document.getElementById("email_error").innerText = "";
+    document.getElementById("msg_error").innerText = "";
 
-    console.log("Bonjour je suis " + firstname + " " + lastname + " .");
-    console.log("Mon email est le suivant : " + email);
-    console.log("Voici mon message : " + msg);
-    dialog.close();
-}
 
-const form = document.querySelector("form");
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-});
-
-document.querySelector("form .contact_button").addEventListener("click", () => {
-    getInfo();
-})
+    if (!firstname.checkValidity()) {
+        document.getElementById("firstname_error").innerText = "Veuillez renseigner votre prénom.";
+    } else {
+        console.log("Bonjour je suis " + firstname.value + " .");
+        input_check++;
+    }
+    if (!lastname.checkValidity()) {
+        document.getElementById("lastname_error").innerText = "Veuillez renseigner votre nom.";
+    } else {
+        console.log("Mon nom est " + lastname.value + " .");
+        input_check++;
+    }
+    if (!email.checkValidity()) {
+        document.getElementById("email_error").innerText = "Veuillez renseigner un Email valide.";
+    } else {
+        console.log("Mon email est le suivant : " + email.value);
+        input_check++;
+    }
+    if (!msg.checkValidity()) {
+        document.getElementById("msg_error").innerText = "Veuillez entrer un message.";
+    } else {
+        console.log("Voici mon message : " + msg.value);
+        input_check++;
+    }
+    console.log(input_check);
+    if (input_check == 4) {
+        dialog.close();
+    }
+};

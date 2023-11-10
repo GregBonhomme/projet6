@@ -38,20 +38,24 @@
         <div>
           <label for="firstname">Prénom</label>
           <input type="text" name="firstname" id="firstname" required>
+          <p id="firstname_error"></p>
         </div>
         <div>
           <label for="lastname">Nom</label>
           <input type="text" name="lastname" id="lastname" required>
+          <p id="lastname_error"></p>
         </div>
         <div>
           <label for="email">Email</label>
           <input type="email" name="email" id="email" required>
+          <p id="email_error"></p>
         </div>
         <div>
           <label for="msg">Votre message</label>
           <input type="text" name="msg" id="msg" required>
+          <p id="msg_error"></p>
         </div>
-        <button class="contact_button">Envoyer</button>
+        <button type="button" class="contact_button" onclick="getInfo()">Envoyer</button>
       </form>
     </div>
   </dialog>
